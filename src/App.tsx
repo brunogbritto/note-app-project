@@ -1,6 +1,8 @@
 import { NotesList } from "./components/NotesList";
 import { nanoid } from "nanoid";
 import { useState } from "react";
+import Search from "./components/Search";
+import Header from "./components/Header";
 
 const App = () => {
   const [notes, setNotes] = useState([
@@ -38,7 +40,9 @@ const App = () => {
     setNotes(newNotes);
   };
   return (
-    <div className="flex justify-center">
+    <div className="mr-auto ml-auto pr-[15px] pl-[15px]">
+      <Header />
+      <Search />
       <NotesList
         notes={notes}
         handleAddNote={AddNote}
