@@ -1,11 +1,17 @@
-import React from "react";
+import { LinkButton } from "./LinkButton";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div>
-      <h1 className="font-bold text-3xl mt-5">NotesAPP</h1>
+    <div className="flex items-center">
+      <Link to="/">
+        <h1 className="font-bold text-3xl mt-5">NoteAPP</h1>
+      </Link>
+      <div className="ml-auto mt-5 ">
+        <LinkButton to="/criar-note">Criar Note</LinkButton>
+      </div>
     </div>
   );
 };
 
-export default Header;
+export { Header };
