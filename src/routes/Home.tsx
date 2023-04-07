@@ -1,32 +1,45 @@
 import { NotesList } from "../components/NotesList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { api } from "../Api";
 import { nanoid } from "nanoid";
 
+interface Note {
+  id: string;
+  title: string;
+  subtitle: string;
+  content: string;
+  created_at: string;
+}
+
+async function getNotepads() {
+  const res = await api.get("/notepads");
+  const notepads = res.data;
+  return notepads;
+}
+
+const initialNotepads: Note[] = [];
+
 const Home = () => {
-  const [notes, setNotes] = useState([
-    {
-      id: nanoid(),
-      text: "Esse é o meu primeiro note!",
-      date: "22/03/2023",
-    },
-    {
-      id: nanoid(),
-      text: "Esse é o meu segundo note!",
-      date: "22/03/2023",
-    },
-    {
-      id: nanoid(),
-      text: "Esse é o meu terceiro note!",
-      date: "22/03/2023",
-    },
-  ]);
+  const [notes, setNotes] = useState<Note[]>(initialNotepads);
+  const [isLoading, setIsLoading] = useState(true);
+  const loadingText = isLoading ? "Loading..." : "";
+
+  useEffect(() => {
+    setIsLoading(true);
+    getNotepads().then((notes) => {
+      setNotes(notes);
+      setIsLoading(false);
+    });
+  }, []);
 
   const AddNote = (text: string) => {
     const date = new Date();
     const newNote = {
       id: nanoid(),
-      text: text,
-      date: date.toLocaleDateString(),
+      title: text,
+      subtitle: text,
+      content: text,
+      created_at: date.toLocaleDateString(),
     };
 
     const newNotes = [...notes, newNote];
@@ -39,11 +52,14 @@ const Home = () => {
   };
 
   return (
-    <NotesList
-      notes={notes}
-      handleAddNote={AddNote}
-      handleDeleteNote={deleteNote}
-    />
+    <div>
+      <div>{loadingText}</div>
+      <NotesList
+        notes={notes}
+        handleAddNote={AddNote}
+        handleDeleteNote={deleteNote}
+      />
+    </div>
   );
 };
 

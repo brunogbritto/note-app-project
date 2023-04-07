@@ -1,21 +1,33 @@
 import { Note } from "./Note";
 import AddNote from "./AddNote";
 
-interface Props {
-  notes: { id: string; text: string; date: string }[];
+export type Notepad = {
+  notes: {
+    id: string;
+    title: string;
+    subtitle: string;
+    content: string;
+    created_at: string;
+  }[];
   handleAddNote: (noteText: string) => void;
   handleDeleteNote: (noteText: string) => void;
-}
+};
 
-const NotesList = ({ notes, handleAddNote, handleDeleteNote }: Props) => {
+export type NotesListProps = {
+  notepads: Notepad[];
+};
+
+const NotesList = ({ notes, handleAddNote, handleDeleteNote }: Notepad) => {
   return (
     <div className="grid gap-4 grid-cols-1 md:grid-cols-4">
       {notes.map((note) => (
         <Note
           key={note.id}
           id={note.id}
-          text={note.text}
-          date={note.date}
+          title={note.title}
+          subtitle={note.subtitle}
+          content={note.content}
+          created_at={note.created_at}
           handleDeleteNote={handleDeleteNote}
         />
       ))}
