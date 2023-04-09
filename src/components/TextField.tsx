@@ -12,7 +12,7 @@ const TextField = ({ value, placeholder, onChange }: TextFieldProps) => {
       <input
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="bg-yellow-400 hover:bg-yellow-400 outline-none w-full whitespace-pre-wrap placeholder-black"
+        className="bg-yellow-400 hover:bg-yellow-400 outline-none w-full whitespace-pre-wrap placeholder-gray-700"
         type="text"
         placeholder={placeholder}
       ></input>

@@ -24,7 +24,7 @@ const ViewNote = () => {
     });
   });
   return (
-    <div>
+    <div className="mt-3">
       <Breadcrumbs
         links={[
           { title: "Página Inicial", link: "/" },

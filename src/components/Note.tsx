@@ -31,10 +31,12 @@ const Note = ({
           <span>{content}</span>
         </div>
       </Link>
-      <div className="flex items-center justify-between">
-        <time dateTime={created_at}>
-          {new Date(created_at).toLocaleDateString()}
-        </time>
+      <div className="flex items-center justify-between mt-7">
+        <div className="text-gray-700">
+          <time dateTime={created_at}>
+            Criado em {new Date(created_at).toLocaleDateString()}
+          </time>
+        </div>
         <MdDeleteForever
           className="cursor-pointer w-6 h-6"
           onClick={() => handleDeleteNote(id)}

@@ -1,3 +1,4 @@
+import { Search } from "../components/Search";
 import { NotesList } from "../components/NotesList";
 import { useState, useEffect } from "react";
 import { api } from "../Api";
@@ -32,6 +33,8 @@ const Home = () => {
     });
   }, []);
 
+  const [searchText, setSearchText] = useState("");
+
   const AddNote = (text: string) => {
     const date = new Date();
     const newNote = {
@@ -54,8 +57,14 @@ const Home = () => {
   return (
     <div>
       <div>{loadingText}</div>
+      <Search handleSearchNote={setSearchText} />
       <NotesList
-        notes={notes}
+        notes={notes.filter(
+          (note) =>
+            note.content.toLowerCase().includes(searchText.toLowerCase()) ||
+            note.title.toLowerCase().includes(searchText.toLowerCase()) ||
+            note.subtitle.toLowerCase().includes(searchText.toLowerCase())
+        )}
         handleAddNote={AddNote}
         handleDeleteNote={deleteNote}
       />
