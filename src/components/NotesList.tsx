@@ -27,7 +27,7 @@ const NotesList = ({ notes, handleAddNote, handleDeleteNote }: Notepad) => {
           title={note.title}
           subtitle={note.subtitle}
           content={note.content}
-          created_at={note.created_at}
+          createdAt={note.created_at}
           handleDeleteNote={handleDeleteNote}
         />
       ))}

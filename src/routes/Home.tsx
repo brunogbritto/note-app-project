@@ -1,7 +1,7 @@
 import { Search } from "../components/Search";
 import { NotesList } from "../components/NotesList";
 import { useState, useEffect } from "react";
-import { api } from "../Api";
+import { api } from "../api";
 import { nanoid } from "nanoid";
 
 interface Note {

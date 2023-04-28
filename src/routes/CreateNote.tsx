@@ -3,7 +3,7 @@ import { TextArea } from "../components/TextArea";
 import toast from "react-simple-toasts";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../Api";
+import { api } from "../api";
 
 const initialCreateNote = {
   title: "",

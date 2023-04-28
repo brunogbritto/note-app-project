@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 interface NoteProps {
   id: string;
   title: string;
-  created_at: string;
+  createdAt: string;
   subtitle: string;
   content: string;
   handleDeleteNote: (noteText: string) => void;
@@ -15,7 +15,7 @@ const Note = ({
   title,
   subtitle,
   content,
-  created_at,
+  createdAt,
   handleDeleteNote,
 }: NoteProps) => {
   return (
@@ -33,8 +33,8 @@ const Note = ({
       </Link>
       <div className="flex items-center justify-between mt-7">
         <div className="text-gray-700">
-          <time dateTime={created_at}>
-            Criado em {new Date(created_at).toLocaleDateString()}
+          <time dateTime={createdAt}>
+            Criado em {new Date(createdAt).toLocaleDateString()}
           </time>
         </div>
         <MdDeleteForever
